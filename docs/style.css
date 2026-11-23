@@ -1,5 +1,6 @@
 :root{color-scheme:light;font:16px/1.6 "Leelawadee UI",system-ui,sans-serif;color:#192e2a;background:#f3f7f3}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0}
 header{background:white;border-bottom:1px solid #d8e4dc}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}

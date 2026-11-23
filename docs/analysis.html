@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>วิเคราะห์แบบ | อ่านดี Training Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="analysis.js" type="module"></script>
+</head>
+<body>
+  <header><div class="wrap"><strong>อ่านดี Training Studio</strong><nav aria-label="เมนูหลัก"><a href="analysis.html" aria-current="page">วิเคราะห์แบบ</a> · <a href="./">ทดลองตรวจแบบ</a></nav></div></header>
+  <main class="wrap">
+    <h1>วิเคราะห์แบบ PDF</h1>
+    <p class="intro">เปิดแบบในเบราว์เซอร์เพื่อตรวจภาพ ข้อความ และขนาดที่ระบุหน่วยไว้บนแต่ละหน้า ไฟล์ที่เลือกประมวลผลบนเครื่องของคุณ</p>
+    <section class="card" aria-label="เลือกแบบ">
+      <label for="pdf">เลือกไฟล์ PDF (สูงสุด 50 MB)</label>
+      <input id="pdf" type="file" accept=".pdf,application/pdf">
+      <div class="actions"><button id="sample" type="button" class="secondary">เปิดแบบตู้ตัวอย่าง</button></div>
+      <p id="file-status" role="status">เลือกไฟล์หรือเปิดแบบตู้ตัวอย่าง</p>
+    </section>
+    <section class="workspace" aria-label="ผลวิเคราะห์" id="results" hidden>
+      <div class="card">
+        <h2>ต้นฉบับ</h2>
+        <div class="actions">
+          <button id="previous" type="button" class="secondary">หน้าก่อนหน้า</button>
+          <button id="next" type="button" class="secondary">หน้าถัดไป</button>
+          <span id="page-number" aria-live="polite"></span>
+        </div>
+        <div class="drawing"><canvas id="preview" aria-label="ภาพหน้าปัจจุบันของไฟล์แบบ" style="position:static;display:block;height:auto;cursor:auto;touch-action:auto"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>ขนาดที่พบในข้อความ</h2>
+        <ul id="dimensions"></ul>
+        <p id="text-note" role="status"></p>
+        <details>
+          <summary>ดูข้อความจาก PDF</summary>
+          <pre id="extracted" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+        </details>
+        <div class="actions"><button id="download-text" type="button">ดาวน์โหลดข้อความหน้านี้</button></div>
+      </div>
+    </section>
+    <p class="notice">สำหรับ PDF สแกน งาน OCR หรือการวิเคราะห์วัสดุด้วย AI ให้ใช้โปรแกรม Python ที่เปิดอยู่ในเครื่อง <a href="http://127.0.0.1:8768/" target="_blank" rel="noopener noreferrer">เปิดโปรแกรมวิเคราะห์แบบในเครื่อง</a></p>
+  </main>
+</body>
+</html>
