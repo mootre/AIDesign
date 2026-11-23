@@ -24,5 +24,15 @@ button{border:1px solid #186249;background:#186249;color:white;cursor:pointer;ma
 button.secondary{background:white;color:#186249}
 button:disabled{opacity:.5;cursor:default}
 .actions{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.25rem}
+.estimate{margin-top:1.5rem}
+.table-scroll{overflow:auto;margin-block:1rem}
+.estimate table{width:100%;border-collapse:collapse;text-align:left}
+.estimate th,.estimate td{padding:.4rem;border-bottom:1px solid #d8e4dc}
+.estimate th{white-space:nowrap}
+.estimate td input{min-width:5rem}
+.estimate td input[type=text]{min-width:8rem}
+.estimate caption{text-align:left;font-weight:600;margin:.5rem 0}
+.estimate input#waste{max-width:8rem}
+.estimate summary{cursor:pointer}
 #status{min-height:2rem}
 @media(max-width:720px){.workspace{grid-template-columns:1fr}}

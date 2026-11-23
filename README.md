@@ -1,5 +1,7 @@
 # ThaiFurnitureAnalyzer Training Studio
 
+หน้า [วิเคราะห์แบบ](https://mootre.github.io/AIDesign/analysis.html) ใช้หลักอ่านแบบจาก ThaiFurnitureAnalyzer และสูตรประมาณวัสดุจาก `estimator.py` ผู้ใช้เปิด PDF เพื่อเทียบหลักฐาน กรอกชิ้นส่วนหรือนำเข้า JSON จากโปรแกรม Python แล้วดูพื้นที่ ขอบ และจำนวนแผ่นโดยประมาณได้ ผลคำนวณตามพื้นที่ใช้ประกอบการตรวจและยังต้องจัด Nesting ก่อนสั่งผลิต
+
 หน้า GitHub Pages ใน `docs/` ใช้แบบตู้สังเคราะห์เพื่อสาธิตการแก้คำตอบ ลากกรอบหลักฐาน ส่งตรวจ อนุมัติ และส่งออก JSONL พร้อมภาพอ้างอิง
 
 เปิด `docs/index.html` ในเบราว์เซอร์เพื่อทดลอง หรือเผยแพร่ผ่าน **Settings → Pages → Deploy from a branch → main → /docs** หน้าเว็บใช้พาธสัมพัทธ์จึงทำงานภายใต้ชื่อ repository ได้

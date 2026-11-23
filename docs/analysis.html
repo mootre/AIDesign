@@ -6,9 +6,10 @@
   <title>วิเคราะห์แบบ | อ่านดี Training Studio</title>
   <link rel="stylesheet" href="style.css">
   <script src="analysis.js" type="module"></script>
+  <script src="estimate.js" type="module"></script>
 </head>
 <body>
-  <header><div class="wrap"><strong>อ่านดี Training Studio</strong><nav aria-label="เมนูหลัก"><a href="analysis.html" aria-current="page">วิเคราะห์แบบ</a> · <a href="./">ทดลองตรวจแบบ</a></nav></div></header>
+  <header><div class="wrap"><strong>อ่านดี Training Studio</strong><nav aria-label="เมนูหลัก"><a href="analysis.html" aria-current="page">วิเคราะห์แบบ</a> · <a href="./#workspace">ทดลองตรวจแบบสำหรับเทรน AI</a></nav></div></header>
   <main class="wrap">
     <h1>วิเคราะห์แบบ PDF</h1>
     <p class="intro">เปิดแบบในเบราว์เซอร์เพื่อตรวจภาพ ข้อความ และขนาดที่ระบุหน่วยไว้บนแต่ละหน้า ไฟล์ที่เลือกประมวลผลบนเครื่องของคุณ</p>
@@ -39,7 +40,38 @@
         <div class="actions"><button id="download-text" type="button">ดาวน์โหลดข้อความหน้านี้</button></div>
       </div>
     </section>
-    <p class="notice">สำหรับ PDF สแกน งาน OCR หรือการวิเคราะห์วัสดุด้วย AI ให้ใช้โปรแกรม Python ที่เปิดอยู่ในเครื่อง <a href="http://127.0.0.1:8768/" target="_blank" rel="noopener noreferrer">เปิดโปรแกรมวิเคราะห์แบบในเครื่อง</a></p>
+    <section class="card estimate" aria-labelledby="estimate-title">
+      <h2 id="estimate-title">วิเคราะห์ชิ้นส่วนและวัสดุ</h2>
+      <p>เทียบรูปด้านบน รูปด้าน และรูปตัดเพื่อยืนยันขนาดและจำนวน ระบุหน้าที่อ้างอิงและความหมายของตัวเลขก่อนนำมาคำนวณ</p>
+      <details>
+        <summary>หลักการอ่านแบบของ ThaiFurnitureAnalyzer</summary>
+        <ol>
+          <li>ตรวจรุ่นของแบบ หน่วย สเกล และขนาดรวมกว้าง × ลึก × สูง จากมุมมองที่เกี่ยวข้อง</li>
+          <li>เทียบขนาดย่อยกับขนาดรวม นับชั้น ลิ้นชัก และอุปกรณ์จากภาพภายในหรือรูปตัด</li>
+          <li>จับคู่หมายเลขสเปกกับวัสดุ ความหนา ผิว และขอบของแต่ละชิ้น</li>
+          <li>บันทึกสิ่งที่อ่านตรง ค่าคำนวณ และสมมติฐานแยกกัน พร้อมหน้าและเหตุผล ถ้ายืนยันไม่ได้ให้เว้นค่า</li>
+          <li>ตรวจขนาดชนกัน ระยะติดตั้ง แนวลายไม้ รอยตัด และชิ้นที่เกินแผ่นก่อนสั่งตัด</li>
+        </ol>
+      </details>
+      <p class="notice">ใช้ OCR และ Codex จาก <a href="http://127.0.0.1:8768/" target="_blank" rel="noopener noreferrer">โปรแกรมวิเคราะห์แบบในเครื่อง</a> แล้วนำเข้าไฟล์ผลวิเคราะห์ JSON หรือกรอกชิ้นส่วนที่ตรวจแล้วด้านล่าง</p>
+      <label for="report-file">นำเข้าผลวิเคราะห์ JSON จากโปรแกรม</label>
+      <input id="report-file" type="file" accept=".json,application/json">
+      <div class="actions"><button id="estimate-sample" type="button" class="secondary">โหลดตัวอย่างประมาณวัสดุ</button></div>
+      <p id="import-status" role="status"></p>
+      <details id="report-context" hidden><summary>หลักฐาน สมมติฐาน และรายการตรวจจากรายงาน</summary><div id="report-details"></div></details>
+      <form id="estimate-form">
+        <label for="waste">เผื่อสูญเสีย (%)</label>
+        <input id="waste" type="number" min="0" max="50" step="any" required value="12">
+        <div class="table-scroll"><table>
+          <caption>รายการชิ้นส่วน</caption>
+          <thead><tr><th>ชิ้นส่วน</th><th>วัสดุ</th><th>หนา (มม.)</th><th>สั้น (มม.)</th><th>ยาว (มม.)</th><th>จำนวน</th><th>ขอบยาว</th><th>ขอบสั้น</th><th>หลักฐานและหน้า</th><th>จัดการ</th></tr></thead>
+          <tbody id="parts"></tbody>
+        </table></div>
+        <div class="actions"><button id="add-part" class="secondary" type="button">เพิ่มชิ้นส่วน</button><button type="submit">คำนวณวัสดุ</button><button id="estimate-download" class="secondary" type="button" disabled>ดาวน์โหลดผล JSON</button></div>
+      </form>
+      <div id="estimate-output" aria-live="polite"></div>
+    </section>
+    <p><a href="./#workspace">ทดลองตรวจแบบสำหรับเทรน AI</a> ด้วยแบบสังเคราะห์ แก้คำตอบ ลากกรอบ ส่งตรวจ และส่งออก JSONL พร้อมภาพหลักฐาน</p>
   </main>
 </body>
 </html>
