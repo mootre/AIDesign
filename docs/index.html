@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>อ่านดี Training Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <header><div class="wrap"><strong>อ่านดี Training Studio</strong><a href="#workspace">ทดลองตรวจแบบ</a></div></header>
+  <main class="wrap">
+    <h1>ตรวจแบบเฟอร์นิเจอร์<br>เพื่อเตรียมชุดข้อมูลฝึก AI</h1>
+    <p class="intro">ลองตรวจขนาดตู้ แก้คำตอบ และชี้หลักฐานบนแบบสังเคราะห์ จากนั้นส่งตรวจ อนุมัติ และดาวน์โหลดตัวอย่างพร้อมภาพอ้างอิง</p>
+    <p class="notice">หน้านี้ใช้ข้อมูลสังเคราะห์และประมวลผลในเบราว์เซอร์ โปรแกรม Python ในเครื่องใช้สำหรับอ่าน PDF จริงด้วย Codex และเก็บประวัติในฐานข้อมูล</p>
+    <section id="workspace" class="workspace" aria-label="พื้นที่ตรวจแบบ">
+      <div class="card">
+        <h2>แบบตู้ตัวอย่าง</h2>
+        <p class="muted">Rev. B · หน้า 1 · รูปด้านหน้า</p>
+        <div class="drawing">
+          <img src="cabinet-demo.png" alt="แบบตู้สังเคราะห์ ระบุความกว้าง 900 มิลลิเมตร">
+          <canvas id="evidence" aria-label="ลากเพื่อชี้กรอบหลักฐาน"></canvas>
+        </div>
+        <p id="evidence-status">ลากกรอบรอบตัวเลขความกว้างบนแบบ หรือใช้ปุ่มด้านล่าง</p>
+        <button id="use-region" type="button" class="secondary">เลือกกรอบรอบตัวเลข</button>
+        <button id="clear-region" type="button" class="secondary">ล้างกรอบ</button>
+      </div>
+      <div class="card">
+        <h2>ตู้กว้างเท่าไร?</h2>
+        <p class="muted">ผลอ่านจำลอง 800 มม.</p>
+        <form id="review">
+          <label for="width">ขนาดที่ตรวจแล้ว (มม.)</label>
+          <input id="width" type="number" min="1" max="100000" required value="800">
+          <label for="split">ชุดข้อมูล</label>
+          <select id="split"><option value="train">Train</option><option value="dev">Dev</option><option value="test">Test</option></select>
+          <div class="actions">
+            <button type="submit">ส่งตรวจ</button>
+            <button type="button" id="approve" disabled>อนุมัติ</button>
+            <button type="button" id="export" disabled>ดาวน์โหลด JSONL และภาพ</button>
+          </div>
+        </form>
+        <p id="status" role="status">รอตรวจขนาดและหลักฐาน</p>
+        <ol id="history" aria-label="ประวัติตรวจรับ"></ol>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

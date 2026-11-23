@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env*
+model/
+.download-cache/
+*.sqlite*
+*.db
+*.pdf
+*.zip
+*.jsonl
+auth/
+data/
+sources/
+exports/
+*.storage.json

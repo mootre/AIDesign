@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>คลังข้อมูลสอน AI อ่านแบบ · อ่านดี Training</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/training.css">
+  <script src="/training.js" defer></script>
+</head>
+<body class="training-page">
+  <a class="tr-skip" href="#trMain">ข้ามไปพื้นที่ตรวจแบบ</a>
+  <header class="tr-header">
+    <a class="tr-brand" href="/" aria-label="อ่านดี Training หน้าหลัก"><span class="tr-brand-mark">อ</span><span><strong>อ่านดี <em>Training</em></strong><small>คลังความรู้จากผู้เชี่ยวชาญ</small></span></a>
+    <nav class="tr-nav" aria-label="เมนูหลัก"><a href="/">วิเคราะห์แบบ</a><a href="/training" aria-current="page">เก็บข้อมูลสอน AI</a></nav>
+    <span class="tr-local"><span aria-hidden="true"></span>ทำงานบนเครื่องของคุณ</span>
+  </header>
+
+  <main id="trMain" class="tr-main">
+    <section class="tr-intro" aria-labelledby="trHeading">
+      <div><p class="tr-eyebrow">HUMAN KNOWLEDGE, BETTER DRAWING AI</p><h1 id="trHeading">ตรวจแบบวันนี้<br><span>สร้างความรู้ให้ AI ครั้งต่อไป</span></h1><p class="tr-lede">ชี้ตำแหน่งหลักฐาน แก้สิ่งที่ AI อ่านคลาดเคลื่อน และให้ผู้เชี่ยวชาญตรวจยืนยัน<br>เก็บต้นฉบับและประวัติแยกกัน เพื่อย้อนกลับไปดูได้ทุกคำตอบ</p></div>
+      <aside class="tr-intro-note"><span class="tr-note-symbol" aria-hidden="true">✦</span><strong>เริ่มจากคำตอบที่เชื่อถือได้</strong><p>บันทึกข้อมูลเพื่อเตรียมชุดฝึก การกดบันทึกยังไม่ทำให้โมเดลเรียนรู้ถาวรโดยอัตโนมัติ</p></aside>
+    </section>
+
+    <div id="trGlobalStatus" class="tr-global-status" role="status" aria-live="polite">กำลังเชื่อมต่อคลังข้อมูลในเครื่อง…</div>
+
+    <section class="tr-stats" aria-label="ภาพรวมคลังข้อมูล">
+      <article><span>แบบในคลัง</span><strong id="statDocs">0</strong><small>ต้นฉบับพร้อม revision</small></article>
+      <article><span>ตัวอย่างคำตอบ</span><strong id="statSamples">0</strong><small>รายการที่ผู้เชี่ยวชาญบันทึก</small></article>
+      <article><span>ผ่านการยืนยัน</span><strong id="statApproved">0</strong><small>แยกจากคำตอบที่ยังรอตรวจ</small></article>
+      <article class="tr-stat-accent"><span>พร้อมส่งออก</span><strong id="statExportable">0</strong><small>ผ่านเกณฑ์สำหรับชุดข้อมูล</small></article>
+    </section>
+
+    <details class="tr-register tr-card">
+      <summary><span><strong>เพิ่มแบบเข้าคลัง</strong><small>ลงทะเบียน PDF ใหม่ พร้อมสิทธิ์ใช้ข้อมูล</small></span><span class="tr-summary-action">เพิ่มเอกสาร <span aria-hidden="true">＋</span></span></summary>
+      <form id="registerForm" class="tr-register-form">
+        <div class="tr-field-grid tr-register-grid">
+          <label>รหัสแบบ<input id="trCode" type="text" maxlength="64" required autocomplete="off" placeholder="เช่น CABINET-DEMO-001"></label>
+          <label>Revision<input id="trRevision" type="text" maxlength="40" required autocomplete="off" placeholder="เช่น B"></label>
+          <label>กลุ่มงาน / ตระกูลผลิตภัณฑ์<input id="trGroup" type="text" maxlength="64" required autocomplete="off" placeholder="ใช้กลุ่มเดียวกันสำหรับแบบที่เกี่ยวข้อง"></label>
+          <label>ชื่อแบบ<input id="trTitle" type="text" maxlength="160" required autocomplete="off" placeholder="ชื่อที่ไม่ระบุข้อมูลลูกค้า"></label>
+          <label>ประเภทงาน<select id="trCategory"><option value="table">โต๊ะ</option><option value="cabinet">ตู้</option><option value="chair">เก้าอี้</option><option value="partition">พาร์ทิชัน</option><option value="other">อื่น ๆ</option></select></label>
+          <label>ไฟล์ต้นฉบับ PDF<input id="trFile" class="tr-file-input" type="file" accept="application/pdf,.pdf" required></label>
+        </div>
+        <fieldset class="tr-permissions"><legend>สิทธิ์การใช้แบบฉบับนี้</legend>
+          <label class="tr-check"><input id="trAllowStorage" type="checkbox" required><span>ฉันมีสิทธิ์นำไฟล์นี้มาเก็บและให้ผู้เชี่ยวชาญตรวจในคลังข้อมูลนี้</span></label>
+          <label class="tr-check"><input id="trPrivacy" type="checkbox" required><span>ตรวจและปกปิดชื่อ อีเมล เบอร์โทร และข้อมูลลูกค้าที่ไม่จำเป็นแล้ว</span></label>
+          <label class="tr-check"><input id="trAllowAI" type="checkbox"><span>อนุญาตส่งหน้าที่เลือกให้ Codex / ผู้ให้บริการ AI เพื่อช่วยอ่านแบบ</span></label>
+          <label class="tr-check"><input id="trAllowTraining" type="checkbox"><span>อนุญาตนำตัวอย่างที่ผ่านการตรวจไปจัดชุดข้อมูลสำหรับฝึก AI</span></label>
+        </fieldset>
+        <div class="tr-form-footer"><p>เก็บไฟล์และคำแก้ไขไว้ในเครื่องนี้ สิทธิ์วิเคราะห์ด้วย AI และสิทธิ์ฝึกโมเดลเลือกแยกกันได้</p><button class="tr-button tr-button-primary" type="submit">ลงทะเบียนแบบ</button></div>
+        <p id="trRegisterStatus" class="tr-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </details>
+
+    <div class="tr-desk">
+      <aside class="tr-library tr-card" aria-labelledby="trLibraryHeading">
+        <div class="tr-section-title"><h2 id="trLibraryHeading">แบบในคลัง</h2><span class="tr-tag">PDF + หลักฐาน</span></div>
+        <label class="tr-search-label" for="trSearch">ค้นหาแบบ</label><input id="trSearch" type="search" placeholder="รหัส ชื่อ หรือกลุ่มงาน" autocomplete="off">
+        <div id="trDocuments" class="tr-documents"><div class="tr-empty"><span aria-hidden="true">▤</span><strong>เริ่มคลังจากแบบแรก</strong><p>กด “เพิ่มแบบเข้าคลัง” ด้านบน แล้วเลือกแบบที่ต้องการให้ผู้เชี่ยวชาญตรวจ</p></div></div>
+        <div class="tr-library-note"><strong>แต่ละ revision มีหลักฐานของตัวเอง</strong><p>ใช้กลุ่มงานเดียวกันกับแบบที่เกี่ยวข้อง เพื่อแยกชุดฝึกและชุดทดสอบอย่างเหมาะสม</p></div>
+      </aside>
+
+      <section id="trWorkspace" class="tr-workspace" hidden aria-label="พื้นที่ตรวจแบบที่เลือก">
+        <div class="tr-document-heading"><div><p class="tr-eyebrow">DRAWING WORKSPACE</p><h2 id="trDocTitle">เลือกแบบเพื่อตรวจ</h2><p id="trDocMeta" class="tr-meta"></p></div><span class="tr-tag">ต้นฉบับคงเดิม</span></div>
+
+        <section class="tr-card tr-ai-card" aria-labelledby="trAIHeading"><div><h3 id="trAIHeading">ให้ AI อ่านก่อน แล้วให้คนตรวจ</h3><p id="trModelVersion" class="tr-helper">ยังไม่มีผล AI · คนทำเฉลยได้ทันที</p></div><div class="tr-ai-controls"><label>จากหน้า<input id="trPredictFirst" type="number" min="1" value="1"></label><label>ถึงหน้า<input id="trPredictLast" type="number" min="1" value="1"></label><button id="trPredict" type="button" class="tr-button" disabled>วิเคราะห์หน้าที่เลือกด้วย Codex</button></div><p id="trPredictStatus" class="tr-form-status" role="status">ส่งออนไลน์เมื่ออนุญาตในสิทธิ์เอกสารเท่านั้น · สูงสุด 8 หน้าต่อครั้ง</p></section>
+        <div class="tr-work-columns">
+          <section class="tr-viewer tr-card" aria-labelledby="trViewerHeading">
+            <div class="tr-viewer-top"><h3 id="trViewerHeading">หลักฐานบนแบบ</h3><span class="tr-helper">ลากกรอบบนภาพเพื่อชี้ตำแหน่ง</span></div>
+            <div class="tr-viewer-toolbar"><div class="tr-page-controls"><button id="trPrev" class="tr-button tr-button-small" type="button" aria-label="หน้าก่อนหน้า">ก่อนหน้า</button><label>หน้า <input id="trPage" type="number" min="1" value="1" aria-label="เลขหน้า PDF"></label><span class="tr-page-total">/ <span id="trPageTotal">0</span></span><button id="trNext" class="tr-button tr-button-small" type="button" aria-label="หน้าถัดไป">ถัดไป</button></div><label class="tr-zoom-label">ซูม<select id="trZoom" aria-label="ระดับซูม"><option value="75">75%</option><option value="100" selected>100%</option><option value="125">125%</option><option value="150">150%</option><option value="200">200%</option></select></label></div>
+            <div class="tr-image-scroll"><div id="trImageWrap" class="tr-image-wrap"><img id="trImage" alt="หน้าต้นฉบับ PDF ที่ใช้เป็นหลักฐาน"><canvas id="trCanvas" aria-label="พื้นที่ลากกรอบหลักฐานบนแบบ"></canvas></div></div>
+            <div class="tr-evidence-panel"><div class="tr-section-title"><h3>ตำแหน่งที่อ้างอิง</h3><button id="trClearEvidence" class="tr-text-button" type="button">ล้างกรอบที่เลือก</button></div><label>มุมมอง / รูปตัด<input id="trViewName" type="text" maxlength="100" placeholder="เช่น รูปด้านหน้า หรือรูปตัด A–A"></label><div id="trEvidenceList" class="tr-evidence-list"><p class="tr-helper">ยังไม่มีตำแหน่งอ้างอิง ลากกรอบให้ครอบคลุมตัวเลขหรือรายละเอียดที่รองรับคำตอบ</p></div><p class="tr-helper">เลือกคนละหน้าเพื่ออ้างอิงหลายมุมมองได้ ตรวจ revision และหน่วยก่อนบันทึกทุกครั้ง</p></div>
+          </section>
+
+          <section class="tr-editor tr-card" aria-labelledby="trEditorHeading">
+            <div class="tr-editor-heading"><p class="tr-eyebrow">EXPERT ANNOTATION</p><h3 id="trEditorHeading">คำตอบที่ผู้เชี่ยวชาญตรวจ</h3><p>แยกสิ่งที่อ่านได้จริง สิ่งที่คำนวณ และสิ่งที่ยังไม่ทราบ</p></div>
+            <form id="annotationForm" class="tr-annotation-form">
+              <div class="tr-field-grid"><label>หัวข้อการอ่าน<select id="trTask"><option value="question">ถาม–ตอบจากแบบ</option><option value="dimension">ขนาดและหน่วย</option><option value="material">วัสดุและความหนา</option><option value="quantity">จำนวน</option><option value="part">ชิ้นส่วน</option><option value="hardware">อุปกรณ์ประกอบ</option><option value="edge">งานขอบและผิว</option></select></label><label>ชิ้นส่วนที่เกี่ยวข้อง<input id="trPart" type="text" maxlength="160" placeholder="เช่น แผ่นข้างตู้"></label></div>
+              <label>โจทย์ / คำถาม<textarea id="trQuestion" rows="2" maxlength="2000" required placeholder="เช่น แผ่นข้างตู้หนาเท่าไร และอ้างอิงจากจุดใด?"></textarea></label>
+              <label>เลือกค่าจากผล AI ที่เก็บไว้<select id="trPrediction"><option value="">คนทำเฉลยเอง / ไม่อ้างผล AI</option></select></label>
+              <label>ผล AI เดิม <span class="tr-optional">ถ้ามี</span><textarea id="trAIValue" class="tr-readonly" rows="2" readonly placeholder="คำตอบต้นทางจาก AI จะแสดงที่นี่"></textarea></label>
+              <label>คำตอบที่ตรวจแล้ว<textarea id="trValue" rows="3" maxlength="4000" placeholder="ระบุคำตอบตามหลักฐาน หรือเว้นค่าเมื่อข้อมูลไม่พอ"></textarea></label>
+              <div class="tr-field-grid"><label>หน่วย<input id="trUnit" type="text" maxlength="40" placeholder="เช่น มม. / ชิ้น"></label><label>ประเภทหลักฐาน<select id="trEvidenceType"><option value="direct">อ่านตรงจากแบบ</option><option value="calculated">คำนวณจากหลักฐาน</option><option value="inferred">อนุมาน — ยังต้องยืนยัน</option><option value="insufficient">ข้อมูลไม่พอ</option></select></label></div>
+              <label>สูตรและค่าต้นทาง <span class="tr-optional">สำหรับค่าที่คำนวณ</span><textarea id="trFormula" rows="2" maxlength="2000" placeholder="บันทึกสูตร หน่วย และค่าต้นทางที่ใช้"></textarea></label>
+              <label>เหตุผล / ข้อสังเกต<textarea id="trExplanation" rows="2" maxlength="3000" placeholder="ชี้ว่าคำตอบนี้มาจากอะไร หรือข้อมูลส่วนใดที่ยังขาด"></textarea></label>
+              <label>รหัสผู้ทำเฉลย<input id="trAuthor" type="text" value="expert-01" maxlength="64" required autocomplete="off"></label>
+              <p class="tr-helper">ใช้รหัสแทนชื่อหรืออีเมล รหัสนี้ใช้บันทึกประวัติ ไม่ใช่การล็อกอินหรือยืนยันตัวตน</p>
+              <div class="tr-editor-actions"><button id="trSave" class="tr-button tr-button-primary" type="submit">บันทึกตัวอย่าง</button><button id="trNew" class="tr-button" type="button">เริ่มรายการใหม่</button></div>
+              <p id="trAnnotationStatus" class="tr-form-status" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+        </div>
+
+        <section class="tr-samples tr-card" aria-labelledby="trSamplesHeading"><div class="tr-section-title"><div><p class="tr-eyebrow">REVIEW QUEUE</p><h3 id="trSamplesHeading">ตัวอย่างและสถานะการตรวจ</h3></div><span class="tr-helper">เลือกรายการเพื่อทบทวนหรือดูประวัติ</span></div><div id="trAnnotations" class="tr-annotations"><p class="tr-empty-line">ยังไม่มีตัวอย่างของแบบนี้ เริ่มทำเฉลยจากแบบด้านบนได้เลย</p></div></section>
+
+        <div class="tr-management-grid">
+          <section class="tr-card tr-review-card" aria-labelledby="trReviewHeading"><p class="tr-eyebrow">SECOND REVIEW</p><h3 id="trReviewHeading">ตรวจทานและยืนยัน</h3><p class="tr-helper">ตรวจคำตอบกับหลักฐานก่อนอนุมัติ หากแก้คำตอบภายหลังต้องตรวจยืนยันรุ่นใหม่</p><form id="reviewForm" class="tr-compact-form"><label>รหัสผู้ทบทวน<input id="trReviewer" type="text" value="reviewer-02" maxlength="64" required autocomplete="off"></label><label>ผลการตรวจ<select id="trReviewDecision"><option value="submit">ส่งเข้าคิวตรวจ</option><option value="approve">ยืนยันคำตอบ</option><option value="changes_requested">ส่งกลับให้แก้ไข</option><option value="reject">ไม่รับเป็นตัวอย่าง</option></select></label><label>ความเห็นผู้ทบทวน (ระบุเหตุผลก่อนยืนยัน)<textarea id="trReviewComment" rows="3" maxlength="3000" placeholder="ระบุเหตุผลที่ยืนยันหรือสิ่งที่ต้องแก้ไข"></textarea></label><label class="tr-check"><input id="trReviewPrivacy" type="checkbox"><span>ตรวจว่าตัวอย่างและหลักฐานไม่มีข้อมูลส่วนบุคคลที่ไม่จำเป็นแล้ว</span></label><button id="trReviewButton" class="tr-button" type="submit">บันทึกผลตรวจ</button></form></section>
+
+          <section class="tr-card tr-dataset-card" aria-labelledby="trDatasetHeading"><p class="tr-eyebrow">DATASET READINESS</p><h3 id="trDatasetHeading">ชุดข้อมูลและสิทธิ์ใช้งาน</h3><label>ชุดข้อมูลของกลุ่มงาน<select id="trSplit"><option value="unassigned">ยังไม่กำหนด</option><option value="train">Train — สำหรับฝึก / ตัวอย่างประกอบ</option><option value="dev">Dev — สำหรับปรับระบบ</option><option value="test">Test — กันไว้ทดสอบ</option></select></label><button id="trAssignSplit" class="tr-button" type="button">กำหนดชุดของกลุ่มงาน</button><p class="tr-helper">แบบ revision และภาพย่อยในกลุ่มเดียวกันควรอยู่ชุดเดียวกัน ห้ามนำชุด Test มาเป็นตัวอย่างประกอบคำตอบระหว่างประเมิน</p><form id="consentForm" class="tr-compact-form"><fieldset class="tr-permissions"><legend>สิทธิ์ของเอกสารที่เลือก</legend><label class="tr-check"><input id="trConsentAI" type="checkbox"><span>อนุญาตส่งให้ AI วิเคราะห์ออนไลน์</span></label><label class="tr-check"><input id="trConsentTraining" type="checkbox"><span>อนุญาตนำตัวอย่างที่ผ่านการตรวจไปเตรียมฝึก AI</span></label><label class="tr-check"><input id="trConsentPrivacy" type="checkbox"><span>ตรวจและปกปิดข้อมูลส่วนบุคคลที่ไม่จำเป็นแล้ว</span></label></fieldset><button class="tr-button" type="submit">บันทึกสิทธิ์ใช้งาน</button></form></section>
+        </div>
+
+        <section class="tr-card tr-history-card" aria-labelledby="trHistoryHeading"><div class="tr-section-title"><h3 id="trHistoryHeading">ประวัติของตัวอย่างที่เลือก</h3><span class="tr-helper">เก็บคำแก้ไขเป็นรุ่น ตรวจย้อนกลับได้</span></div><div id="trHistory" class="tr-history"><p class="tr-empty-line">เลือกรายการในคิวตรวจเพื่อดูประวัติ</p></div></section>
+      </section>
+    </div>
+
+    <section class="tr-export tr-card" aria-labelledby="trExportHeading"><div><p class="tr-eyebrow">APPROVED DATA ONLY</p><h2 id="trExportHeading">นำความรู้ที่ยืนยันแล้วไปพัฒนาต่อ</h2><p>ส่งออกเฉพาะตัวอย่างที่อนุมัติและผ่านเงื่อนไขของชุดข้อมูล พร้อมคำตอบ หลักฐาน และ revision สำหรับตรวจย้อนกลับ</p><p class="tr-helper">การส่งออกเป็นการเตรียมข้อมูล ยังไม่เริ่มฝึกหรืออัปโหลดให้ผู้ให้บริการโมเดล</p></div><div class="tr-export-action"><button id="trExportButton" class="tr-button tr-button-primary" type="button">ส่งออกชุดข้อมูลที่ผ่านเกณฑ์</button><p id="trExportStatus" class="tr-form-status" role="status" aria-live="polite"></p></div></section>
+    <footer class="tr-footer"><strong>อ่านดี Training</strong><p>สำหรับผู้ใช้ที่เชื่อถือได้บนเครื่องนี้เท่านั้น · รหัสผู้ตรวจไม่ใช่ระบบยืนยันตัวตน · ตรวจสิทธิ์ของแบบก่อนเก็บหรือส่งให้ AI</p></footer>
+  </main>
+</body>
+</html>
